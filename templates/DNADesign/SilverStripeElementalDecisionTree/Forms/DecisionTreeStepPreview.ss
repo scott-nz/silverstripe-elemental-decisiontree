@@ -3,7 +3,7 @@
 	<tbody>
 		<tr>
 			<td colspan="$Answers.Count">
-				<div class="question<% if Type="Result" %> question--result<% end_if %> <% if $IsCurrentlyEdited %>question--current<% end_if %>" id="q{$ID}">
+				<div class="question<% if $Type='Result' %> question--result<% end_if %> <% if $IsCurrentlyEdited %>question--current<% end_if %>" id="q{$ID}">
 					<% if $IsCurrentlyEdited %>
 						$Title
 					<% else %>
@@ -14,9 +14,10 @@
 		</tr>
 		<tr class="tr-answers">
 			<% loop $Answers %>
-				<td><div class="answer answerfor-{$Question.ID}" data-answerfor="q"><a href="$CMSEditLink">$Title</a></div>
+                <td>
+                    <div class="answer answerfor-{$Question.ID}" data-answerfor="q{$ID}"><a href="$CMSEditLink">$Title</a></div>
 					<% if $ResultingStep %>
-						<% include DNADesign\SilverStripeElementalDecisionTree\Forms\DecisionTreeStepPreview Step=$ResultingStep %>
+						<% include \DNADesign\SilverStripeElementalDecisionTree\Forms\DecisionTreeStepPreview Step=$ResultingStep %>
 					<% else %>
 						<table class="decisiontree-table">
 							<tbody>
