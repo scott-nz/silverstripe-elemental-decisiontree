@@ -2,13 +2,13 @@
 <div class="step<% if $FirstStep.ID == $Step.ID %> step--first<% end_if %>">
 	<form action="$Controller.Link('getNextStepForAnswer')" method="post" class="step-form">
 		<% with $Step %>
-		<fieldset>
+		<div class='fieldset'>
 			<legend class="step-legend <% if $Content %>step-legend--withcontent<% end_if %>">
 				<span class="step-title">
 					<span class="step-number">{$PositionInPathway}.</span>
 					<span class="step-title-inner">$Title</span>
 				</span>
-				<% if $Content %><span class="step-content">$Content</span><% end_if %>
+				<% if $Content %><div class="step-content">$Content</div><% end_if %>
 			</legend>
 			<% if Answers %>
 				<ul class="optionset step-options">
@@ -20,7 +20,7 @@
 				<% end_loop %>
 				</ul>
 			<% end_if %>
-		</fieldset>
+		</div>
 		<% end_with %>
 	</form>
 
